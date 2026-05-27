@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid-ul-Adha Mubarak 🌙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(to bottom,#071426,#102f4e,#071426);
+position:relative;
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:.2;}
+50%{opacity:1;}
+}
+
+/* Moon */
+
+.moon{
+position:absolute;
+top:60px;
+right:50px;
+width:120px;
+height:120px;
+background:#fff8dc;
+border-radius:50%;
+box-shadow:
+0 0 30px white,
+0 0 90px gold;
+animation:moonMove 5s ease-in-out infinite;
+}
+
+.moon::before{
+content:'';
+position:absolute;
+width:100px;
+height:100px;
+background:#102f4e;
+border-radius:50%;
+left:28px;
+}
+
+@keyframes moonMove{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+/* Clouds */
+
+.cloud{
+position:absolute;
+width:220px;
+height:70px;
+background:rgba(255,255,255,0.08);
+border-radius:100px;
+filter:blur(2px);
+animation:cloudMove linear infinite;
+}
+
+.cloud::before,
+.cloud::after{
+content:'';
+position:absolute;
+background:rgba(255,255,255,0.08);
+border-radius:50%;
+}
+
+.cloud::before{
+width:90px;
+height:90px;
+top:-35px;
+left:20px;
+}
+
+.cloud::after{
+width:110px;
+height:110px;
+top:-45px;
+right:20px;
+}
+
+@keyframes cloudMove{
+from{
+transform:translateX(-500px);
+}
+to{
+transform:translateX(1800px);
+}
+}
+
+/* Rain */
+
+.rain{
+position:absolute;
+width:2px;
+height:18px;
+background:rgba(255,255,255,0.4);
+animation:rain linear infinite;
+}
+
+@keyframes rain{
+from{
+transform:translateY(-100vh);
+}
+to{
+transform:translateY(100vh);
+}
+}
+
+/* Masjid */
+
+.masjid{
+position:absolute;
+bottom:0;
+width:100%;
+height:220px;
+background:black;
+opacity:.85;
+clip-path:polygon(
+0% 100%,0% 70%,8% 70%,8% 55%,12% 55%,12% 35%,
+16% 35%,16% 55%,20% 55%,20% 70%,30% 70%,30% 50%,
+40% 50%,40% 20%,50% 0%,60% 20%,60% 50%,70% 50%,
+70% 70%,80% 70%,80% 55%,84% 55%,84% 35%,88% 35%,
+88% 55%,92% 55%,92% 70%,100% 70%,100% 100%
+);
+}
+
+/* Main Card */
+
+.card{
+position:relative;
+z-index:10;
+width:92%;
+max-width:430px;
+padding:35px 25px;
+border-radius:30px;
+text-align:center;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:0 0 35px rgba(0,0,0,.6);
+}
+
+/* Typing */
+
+.typing{
+font-size:2rem;
+font-weight:700;
+color:white;
+text-shadow:0 0 20px gold;
+min-height:70px;
+}
+
+/* Arabic */
+
+.arabic{
+font-size:2rem;
+margin-top:10px;
+color:#ffd700;
+animation:glow 3s infinite;
+}
+
+@keyframes glow{
+0%,100%{
+text-shadow:0 0 10px gold;
+}
+50%{
+text-shadow:0 0 30px gold;
+}
+}
+
+/* Goat */
+
+.goat{
+font-size:60px;
+margin-top:10px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* Message */
+
+.message{
+margin-top:15px;
+line-height:1.8;
+color:#f1f1f1;
+font-size:1rem;
+}
+
+/* Dua */
+
+.dua{
+margin-top:18px;
+color:#ffd700;
+min-height:50px;
+font-size:1rem;
+}
+
+/* Clock */
+
+.clock{
+margin-top:12px;
+color:white;
+font-size:1rem;
+}
+
+/* Button */
+
+button{
+margin-top:22px;
+padding:14px 30px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ffd700,#ff9800);
+color:black;
+font-weight:bold;
+cursor:pointer;
+transition:.4s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 25px gold;
+}
+
+.name{
+margin-top:18px;
+color:#ffd700;
+font-size:1.1rem;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:999;
+}
+
+.popup-content{
+width:100%;
+max-width:520px;
+max-height:90vh;
+overflow-y:auto;
+background:#111;
+padding:28px;
+border-radius:25px;
+color:white;
+animation:popupShow .6s ease;
+}
+
+@keyframes popupShow{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.popup h2{
+text-align:center;
+color:#ffd700;
+margin-bottom:20px;
+}
+
+.section{
+margin-top:18px;
+padding:15px;
+border-radius:15px;
+background:rgba(255,255,255,.05);
+line-height:1.8;
+}
+
+.share{
+margin-top:18px;
+text-align:center;
+color:#ffb703;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.05);
+}
+}
+
+/* Fireworks */
+
+.firework{
+position:absolute;
+font-size:32px;
+animation:burst 1.5s ease forwards;
+z-index:9999;
+}
+
+@keyframes burst{
+0%{
+transform:scale(0);
+opacity:1;
+}
+100%{
+transform:scale(3);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Moon -->
+<div class="moon"></div>
+
+<!-- Clouds -->
+<div class="cloud" style="top:10%;left:-400px;animation-duration:45s;"></div>
+<div class="cloud" style="top:25%;left:-600px;animation-duration:70s;"></div>
+
+<!-- Masjid -->
+<div class="masjid"></div>
+
+<!-- Main Card -->
+
+<div class="card">
+
+<div class="typing" id="typing"></div>
+
+<div class="arabic">
+الله ❤️ محمد ﷺ
+</div>
+
+<div class="goat">🐐</div>
+
+<div class="message">
+May Allah accept your Qurbani,<br>
+forgive your sins and fill your life<br>
+with happiness & barakah 🤍
+</div>
+
+<div class="dua" id="dua"></div>
+
+<div class="clock" id="clock"></div>
+
+<button onclick="startExperience()">
+Eid Day 2026 ✨
+</button>
+
+<div class="name">
+— Wasim Akhtar
+</div>
+
+</div>
+
+<!-- Popup -->
+
+<div class="popup" id="popup">
+
+<div class="popup-content">
+
+<h2>🌙 Why We Celebrate Bakrid</h2>
+
+<div class="section">
+<b>🇮🇳 Hindi</b><br><br>
+
+Bakrid hume Hazrat Ibrahim (A.S.) ki
+Allah ke prati wafadari aur qurbani ki
+yaad dilati hai. Ye tyohar hume sikhata hai
+ki Allah ke liye sacche dil se qurbani,
+mohabbat aur insaniyat kitni zaroori hai.
+</div>
+
+<div class="section">
+<b>🇬🇧 English</b><br><br>
+
+Eid-ul-Adha reminds us of the devotion,
+sacrifice and faith of Prophet Ibrahim (A.S.).
+It teaches love, kindness, sharing and
+complete trust in Allah.
+</div>
+
+<div class="section">
+<b>🇵🇰 Urdu</b><br><br>
+
+بقرعید ہمیں حضرت ابراہیم علیہ السلام کی
+قربانی، وفاداری اور اللہ پر مکمل یقین
+کی یاد دلاتی ہے۔ یہ عید محبت،
+انسانیت اور ایمان کا پیغام دیتی ہے۔
+</div>
+
+<div class="section">
+<b>📖 Quran Reminder</b><br><br>
+
+“Indeed, Allah loves those who do good.”
+— Surah Al-Baqarah 2:195
+</div>
+
+<div class="share">
+❤️ Share Blessings & Spread Smiles ❤️
+</div>
+
+<button onclick="closePopup()">
+Close ✨
+</button>
+
+</div>
+
+</div>
+
+<!-- Nasheed -->
+
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4a1cbd5d6e.mp3?filename=ramadan-background-110305.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Firework Sound -->
+
+<audio id="crackerSound">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4010d49f53.mp3?filename=fireworks-29629.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Stars */
+
+for(let i=0;i<100;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.top=Math.random()*100+"%";
+
+star.style.left=Math.random()*100+"%";
+
+document.body.appendChild(star);
+
+}
+
+/* Rain */
+
+for(let i=0;i<140;i++){
+
+let rain=document.createElement("div");
+
+rain.className="rain";
+
+rain.style.left=Math.random()*100+"vw";
+
+rain.style.animationDuration=(Math.random()*1+0.5)+"s";
+
+rain.style.opacity=Math.random();
+
+document.body.appendChild(rain);
+
+}
+
+/* Typing Effect */
+
+let text="🌙 Eid-ul-Adha Mubarak 🌙";
+
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typing,100);
+
+}
+
+}
+
+typing();
+
+/* Dua Change */
+
+let duas=[
+
+"🤲 Taqabbal Allah منا ومنكم",
+"✨ May Allah bless your family",
+"🌙 Eid Mubarak to you & your loved ones",
+"❤️ Spread love and kindness",
+"📿 Allah is with the patient"
+
+];
+
+let d=0;
+
+setInterval(()=>{
+
+document.getElementById("dua").innerHTML=duas[d];
+
+d=(d+1)%duas.length;
+
+},2500);
+
+/* Clock */
+
+function updateClock(){
+
+let now=new Date();
+
+document.getElementById("clock").innerHTML=
+"⏰ Eid Day • "+now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+/* Main Experience */
+
+function startExperience(){
+
+document.getElementById("popup").style.display="flex";
+
+/* Nasheed */
+
+let music=document.getElementById("bgMusic");
+
+music.volume=0.4;
+
+music.play();
+
+/* Cracker Sound */
+
+let crack=document.getElementById("crackerSound");
+
+crack.volume=1;
+
+crack.play();
+
+/* Fireworks */
+
+fireworks();
+
+}
+
+/* Close Popup */
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+/* Fireworks Animation */
+
+function fireworks(){
+
+for(let i=0;i<35;i++){
+
+let fire=document.createElement("div");
+
+fire.className="firework";
+
+fire.innerHTML=["✨","🌙","⭐","💛","🎆"][Math.floor(Math.random()*5)];
+
+fire.style.left=Math.random()*100+"vw";
+
+fire.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(fire);
+
+setTimeout(()=>{
+fire.remove();
+},1500);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
